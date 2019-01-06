@@ -12,15 +12,15 @@ import com.kafkaexample.model.Car;
 public class Sender{
     //private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-    @Value("${kafka.topic.json}")
-    private String jsonTopic;
+    /*@Value("${kafka.topic.json}")
+    private String jsonTopic;*/
 
     @Autowired
     private KafkaTemplate<String,Car> kafkaTemplate;
 
-    public void send(Car car){
-        System.out.println(car);
-        System.out.println(jsonTopic);
+    public void send(String jsonTopic,Car car){
+        /*System.out.println(car);
+        System.out.println(jsonTopic);*/
         kafkaTemplate.send(jsonTopic,car);
     }
 }

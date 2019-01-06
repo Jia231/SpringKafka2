@@ -19,7 +19,7 @@ public class IndexController{
 
     @PostMapping("/kafka/{topicName}")
     public String sendToTopic(@PathVariable String topicName, @RequestBody Car car) {
-        kafkaSender.send(car);
+        kafkaSender.send(topicName,car);
         return "Message sent";
     }
 

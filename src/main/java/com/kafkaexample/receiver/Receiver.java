@@ -20,7 +20,19 @@ public class Receiver{
 
     @KafkaListener(topics="${kafka.topic.json}")
     public void receive(Car car){
-        //Logger.info("received car='{}'",car.toString());
+        System.out.println(car.toString());
+        latch.countDown();
+    }
+
+    @KafkaListener(topics="topic1")
+    public void receiveTopic1(Car car){
+        System.out.println("Only for topic 1 " + car.toString());
+        latch.countDown();
+    }
+
+    @KafkaListener(topics="topic2")
+    public void receiveTopic2(Car car){
+        System.out.println("Only for topic 2 " + car.toString());
         latch.countDown();
     }
 }
